@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Event Time Tracker</title>
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <script src="index.js" defer></script>
+</head>
+<body>
+    <div id="container">
+        <div id="main">
+            <div id="searchbar">
+                <span>Search Event</span>
+                <input type="text" name="searchText" id="searchText">
+            </div>
+            <div id="tool-bar">
+                <div id="sorter">
+                    <select name="timeleft" id="" > 
+                        <Option value="1">Time Left</Option> 
+                        <Option value="2">Name</Option> 
+                    </select>
+                    <span id="sort-order" onclick="sort(this)">↑</span>
+                </div>
+                <div id="addnew-event" onclick="showNewEventForm()">Add New</div>
+            </div>
+            <div id="event-mat" data-sort-order="asc" >
+                <!-- Dummy Event  -->
+                <!-- <div class="event">
+                    <div class="event-header">
+                        <span class="event-title">Durga Puja</span>
+                        <span class="event-edit" style="right:65px; color:dodgerblue;" onclick="editEvent(this.parentElement.parentElement)">Edit</span>
+                        <span class="event-delete" style="right:10px; color:black;" onclick="deleteEvent(this.parentElement.parentElement)">Delete</span>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-date">
+                            <div style="width: 100%; height:20px;">Date</div>                            
+                            <div class="date" style="margin-top:10px;display:inline-block;width:130px; padding:1.5px 0px; border-radius:4px;color:white;background:dodgerblue;">19 - 10 - 2019</div>
+                        </div>
+                        <div class="event-timeleft" style="">
+                            <div style="min-width: 100%; height:20px; display: block;">Time Left </div>
+                            <div class="months time-compotent">1 Month</div>
+                            <div class="weeks time-compotent">0 Week</div>
+                            <div class="days time-compotent">4 Days</div>
+                            <div class="hours time-compotent">18 Hours</div>
+                            <div class="minutes time-compotent">9 Minutes</div>
+                        </div>
+                    </div>
+                    <div class="event-footer">
+
+                    </div>
+                </div> -->
+                <!-- /Dummy Event  -->
+
+            </div>
+        </div>
+    </div>
+
+    <div id="newEventAdderPane-container">
+            <div id="newEventAdderPane-form">
+                <div id="newEventAdderPane-form-header">
+                    Add New Event
+                </div>
+                <label for="event-name">Event Name : </label>
+                <input type="text" name="event-name" id="event-name" placeholder="ex:- FIFA World Cup 2020">
+                <span id="event-name-font-colorpicker" title="Choose Font Color of Event Name"><strong>A</strong></span>
+                <span id="event-name-bg-colorpicker" title="Choose Background Color of Event Name"><strong>A</strong></span>
+                
+                <label style="margin-top: 5px;" for="event-date">Event Date : </label>
+                <input type="text" name="event-date" id="event-date" style="margin-bottom: 20px;"  placeholder="Ex :- 20 - 02 - 2020">
+                
+                <span id="event-date-font-colorpicker" title="Choose Font Color of Event Date"><strong>A</strong></span>
+                <span id="event-date-bg-colorpicker" title="Choose Background Color of Event Date"><strong>A</strong></span>
+
+                <button onclick="addNewEvent(this.previousSibling.value)">Add</button>
+                <button style="border:1px solid lightcoral;background: white;color:lightcoral" onclick="this.parentElement.parentElement.style.display='none'">Cancel</button>
+            </div>
+        </div>
+
+
+        <div id="editEventAdderPane-container">
+            <div id="editEventAdderPane-form">
+                <div id="editEventAdderPane-form-header">
+                    Edit Event
+                </div>
+                <label for="event-name">Event Name : </label>
+                <input type="text" name="event-name" id="event-name" placeholder="ex:- FIFA World Cup 2020">
+                <label style="margin-top: 5px;" for="event-date">Event Date : </label>
+                <input type="text" name="event-date" id="event-date" style="margin-bottom: 20px;"  placeholder="ex:- 20 - 02 - 2020">
+                <button onclick="updateEvent(this.parentElement)">Update</button>
+                <button style="background: lightcoral;" onclick="this.parentElement.parentElement.style.display='none'">Cancel</button>
+            </div>
+        </div>
+
+        <div id="confirmation-popup-container">
+            <div id="popup">
+                <h4>Do You Want To Delete This Event ?? </h4>
+                <button onclick="yesDelete('yes',this.parentElement.parentElement)">Yes</button>
+                <button style="background: lightcoral;" onclick="yesDelete('no',this.parentElement.parentElement)">No</button>
+            </div>
+        </div>
+
+        <div id="details" data-visible="no">
+            <div id="opener" onclick="showDetailTab(this)" title="Detail">
+                    ∇
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,634 @@
+*{    
+    box-sizing: border-box;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0000003d;
+    border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #5556;
+}
+
+body {
+    margin: 0px;
+    padding:0px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 16.5px;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    background: #eee;
+}
+
+#main {
+    width: 800px;
+    /* max-width: 900px; */
+    height: 99.5vh;
+    border: 1px solid #aaa;
+    border-top: none;
+    display: block;
+    position: relative;
+    margin: 0px auto;
+    overflow: hidden;
+    background: #fdfdfde8;
+}
+
+#searchbar {
+    width: inherit;
+    /* min-height:70px; */
+    box-shadow: 4px 3px 10px #aaa;
+    box-sizing: border-box;
+    position: fixed;
+    overflow:visible;
+    background: #c4b9a414;
+}
+
+#searchbar span:first-child {
+    display: inline-block;
+    width: auto;
+    background: #e9ecef;
+    text-align:center;
+    padding: 12px 11px;
+    margin-bottom: -17px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    font-size: 15px;
+    color: #495057;
+}
+
+#searchbar::after {
+    content:"";
+    width:100px;
+    height:100px;
+    background: #eee;
+    position:absolute;
+    right:-100px;
+}
+
+
+
+#searchText{
+    width: 80%;
+    text-indent: 10px;
+    padding: 8px 6px;
+    height: 41.5px;
+    border-radius: 37px;
+    border: 1px solid #cccc;
+    outline: none;
+    transition: all .3s;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin: 15px;
+    margin-left: -5px;
+}
+
+
+#searchText:focus {
+    border:1px solid lightsalmon;
+    box-shadow: 0px 0px 5px orange;
+}
+
+#tool-bar {
+    width: 100%;
+    min-height: 40px;
+    height: auto;
+    position: relative;
+    top: 100px;
+    /* background: green; */
+    /* border-top: 1px solid wheat; */
+    bottom: 50px;
+}
+div#sorter {
+    position: absolute;
+    left: 40px;
+}
+#sort-order {
+    cursor:pointer;
+    display:inline-block;
+    margin-bottom: -7px;
+    margin-left: 3px;
+    transition: all .3s ease-out;
+    transform: rotate(0deg);
+}
+#tool-bar select {
+    cursor: pointer;
+    display: inline-block;
+    /* position: absolute; */
+    /* left: 10px; */
+    min-width: 70px;
+    height:30px;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    outline: none;
+}
+
+.timeType select {
+    cursor: pointer;
+    display: inline-block;
+    /* position: absolute; */
+    /* left: 10px; */
+    min-width: 70px;
+    height:30px;
+    border: none;
+    border-radius: 5px;
+    border: 1.5px solid #aaa;
+    outline: none;
+    position: absolute;
+    right: 100px;
+}
+.timeType option {
+    cursor: pointer;
+}
+#addnew-event {
+    cursor: pointer;
+    position: absolute;
+    padding: 7px 15px;
+    background: white;
+    border-radius: 5px;
+    color: dodgerblue;
+    border:1px solid dodgerblue;
+    display: inline-block;
+    right: 15px;
+    margin-bottom: 0px;
+    transition: all .3s;
+}
+#addnew-event:hover {
+    background: dodgerblue;
+    border-radius: 5px;
+    color: white;
+}
+#event-mat {
+    /* background:pink; */
+    width: 100%;
+    min-height: 100px;
+    height: 100vh;
+    top: 120px;
+    position: relative;
+    overflow-y: auto;
+    padding-bottom: 150px;
+}
+.event {
+    position: relative;
+    margin: 20px auto;
+    background: #eee;
+    width:90%;
+    min-height: 50px;
+    border-radius: 3px;
+    border:1px solid #bbbb;
+    box-shadow: 8px 7px 8px -2px #ccc;
+    perspective: 235px;
+}
+
+.event > .event-timeleft div {
+    display: none;
+}
+
+.event > .event-header {
+    width: 100%;
+    min-height: 30px;
+    line-height: 30px;
+    background: white;
+    /* border: 1px solid #aaaaaaa6; */
+    /* border-bottom: navajowhite; */
+    padding: 5px;
+    padding-left: 20px;
+    text-align: left;
+}
+.event > .event-header > .event-title {
+    
+background: orange;
+    
+border: 1px solid black;
+    
+padding: 4px 12px;
+    
+border-radius: 4px;
+    
+color: black;
+}
+.event > .event-header > .event-edit,.event-delete {
+    cursor: pointer;
+    font-size: 11px;
+    display: inline-block;
+    position:absolute;
+    right:65px;
+}
+
+.event > .event-header > .event-edit:hover {
+    text-decoration: underline;
+}
+
+.event > .event-header > .event-delete:hover {
+    text-decoration: underline;
+}
+
+.event > .event-body {
+    width: 100%;
+    height: 80px;
+    padding: 5px 10px;
+}
+
+.event > .event-footer {
+    width: 100%;
+    min-height: 20px;
+    padding: 5px;
+    position: relative;
+    bottom: 0px;
+    background: white;
+}
+
+.event > .event-body > .event-date {
+    width: 21%;
+    /* background:lightcoral; */
+    display: inline-block;
+    /* border-right: 1px dotted #aaa; */
+    min-height: 60px;
+    float: left;
+}
+.event > .event-body > .event-timeleft {
+    width: 79%;
+    /* background:cornflowerblue;     */
+    min-height: 80px;
+    display: inline-block;
+    /* background: red; */
+    border-left: 1px dotted #aaa;
+}
+.event > .event-body > .event-timeleft div:first-child {
+    background:black;
+    line-height: unset;
+    margin: unset;
+    background:none;
+    color: black;
+}
+.event > .event-body > .event-timeleft div {
+    /* width: 80px; */
+    /* height: 30px; */
+    line-height: 30px;
+    margin-top: 10px;
+    background:black;
+    box-shadow: 1px 2px 10px #aaaaaab0;
+    color: white;
+    border-radius: 4px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 1px 6.5px;
+    transform-origin: top;
+    transform: rotateX(0deg);
+}
+
+.event > .event-body > .event-timeleft div:first-child {
+    animation:unset;
+    box-shadow: unset;
+}
+.event > .event-body > .event-timeleft div {
+    animation: fadeIn .5s cubic-bezier(0, 1.56, 1, 1.9);
+}
+@keyframes fadeIn {
+    0% { opacity:0; transform:rotateX(-10deg) }
+    50% { opacity:0; transform:rotateX(-90deg) }
+    100% { opacity:1;  transform:rotateX(0deg) }
+}
+.event > .event-body > .event-timeleft div.years {
+    background:lightpink;
+}
+.event > .event-body > .event-timeleft div.months {
+    background:cornflowerblue;
+}
+.event > .event-body > .event-timeleft div.days {
+    background:lightseagreen;
+}
+
+.event > .event-body > .event-timeleft div.hours {
+    background:lightcoral;
+}
+.event > .event-body > .event-timeleft div.minutes {
+    background:blueviolet;
+}
+
+.event > .event-body > .event-timeleft div.seconds {
+    background: red;
+}
+.time-compotent {
+    box-shadow: 1px 1.5px 3px rgba(0, 0, 0, 0.801);
+}
+
+.hide {
+    display: none!important;
+}
+
+/* Css for new event pane adding */
+#newEventAdderPane-container {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.71);
+    z-index: 10000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    text-align: start;
+    display: none;
+}
+
+#newEventAdderPane-form {
+    width: 400px;
+    min-height: 220px;
+    background: white;
+    border-radius: 4px;
+    padding: 30px;
+    margin: 50px auto;
+    position: relative;
+    border: 1px solid lightcoral;
+}
+
+#newEventAdderPane-form-header {
+    width: 100%;
+    padding: 10px 0px;
+    background: lightcoral;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+#newEventAdderPane-form > label:nth-child(2) {
+    margin-top:35px;
+}
+#newEventAdderPane-container label {
+    font-size: 15px;
+    color: black;
+    margin: 20px 0px -14px 0px;
+    display: block;
+    margin: 10px 0px 00px 0px;
+    position: relative;
+}
+
+#newEventAdderPane-container input {
+    width: 77%;
+    text-indent: 10px;
+    padding: 3px 3px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #cccc;
+    outline: none;
+    transition: all .3s;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+
+#newEventAdderPane-container button {
+    padding: 7px 20px;
+    border-radius: 3px;
+    background: white;
+    color: dodgerblue;
+    border: 1px solid dodgerblue;
+    font-family: sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 1px 1px 3px #aaa;
+    transition: all .3s ease-out;
+}
+#newEventAdderPane-form > button:nth-child(10):hover{    
+    background: dodgerblue;
+    color: white;
+    border: 1px solid dodgerblue;
+}
+
+#newEventAdderPane-form > button:nth-child(7) {
+    background: white!important;
+    color: lightcoral;
+    border: 1px solid lightcoral;
+}
+#newEventAdderPane-form > button:nth-child(11):hover {
+    background: lightcoral!important;
+    color: white!important;
+    border: 1px solid lightcoral;
+}
+#newEventAdderPane-container button:first-child {
+    padding: 7px 20px;
+    border-radius: 3px;
+    color:white;
+    border:none;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+
+
+#event-name-font-colorpicker {
+    display: inline-block;
+    position: relative;
+    padding: 7px 10px;
+    border:1px solid #aaa;
+    border-radius: 3px;
+    top: 13px;
+    cursor: pointer;
+}
+#event-name-bg-colorpicker {
+    display: inline-block;
+    position: relative;
+    padding: 7px 10px;
+    border:1px solid #aaa;
+    border-radius: 3px;
+    top: 13px;
+    background: black;
+    color: white;    
+    cursor: pointer;
+}
+
+#event-date-font-colorpicker {
+    display: inline-block;
+    position: relative;
+    padding: 7px 10px;
+    border:1px solid #aaa;
+    border-radius: 3px;
+    top: 13px;
+    cursor: pointer;
+}
+#event-date-bg-colorpicker {    
+    display: inline-block;
+    position: relative;
+    padding: 7px 10px;
+    border:1px solid #aaa;
+    border-radius: 3px;
+    top: 13px;
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* /Css for new event pane adding */
+
+
+
+
+/* ------------------------------------------------------ CSS for edit event pane adding ------------------------------------------ */
+#editEventAdderPane-container {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.71);
+    z-index: 10000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    text-align: start;
+    display: none;
+}
+
+#editEventAdderPane-form {
+    width: 379px;
+    min-height: 200px;
+    background: white;
+    border-radius: 4px;
+    padding: 30px;
+    margin: 50px auto;
+    position: relative;
+    border: 1px solid lightcoral;
+    overflow: hidden;
+}
+
+#editEventAdderPane-form-header {
+    width: 100%;
+    padding: 10px 0px;
+    background: lightcoral;
+    text-align: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: white;
+    font-weight: bold;
+}
+
+
+#editEventAdderPane-container label {
+    font-size: 15px;
+    color: black;
+    margin: 20px 0px 5px 0px;
+    display: inline-block;
+}
+
+#editEventAdderPane-container input {    
+    width: 85%;
+    text-indent: 10px;
+    padding: 3px 3px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #cccc;
+    outline: none;
+    transition: all .3s;
+    margin-bottom: 10px;
+}
+#editEventAdderPane-container button {
+    padding: 7px 20px;
+    border-radius: 3px;
+    background:dodgerblue;
+    color:white;
+    border:none;
+    font-family: sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
+
+#editEventAdderPane-container button:first-child {
+    padding: 7px 20px;
+    border-radius: 3px;
+    color:white;
+    border:none;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+/* /Css for new event pane adding */
+
+#details {
+    width:100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 99999;
+    top: 100%;
+    left: 0px;
+    background:#343a40;
+    overflow: visible;
+    transition: all .5s ease-in;
+}
+#opener {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 23px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: -25px;
+    right: 300px;
+    background: dodgerblue;
+    overflow: visible!important;
+    z-index: 999999;
+    transform: rotate(180deg);
+    transition: all .3s ease-in;
+}
+
+#confirmation-popup-container {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.71);
+    z-index: 10000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    text-align: start;
+    display: none;   
+}
+
+#popup {
+    width: 360px;
+    min-height: 100px;
+    background: white;
+    border-radius: 4px;
+    padding: 30px;
+    padding-top: 10px;
+    margin: 150px auto;
+    position: relative;
+    border: 1px solid lightcoral;
+    overflow: hidden;
+}
+
+#confirmation-popup-container button {
+    padding: 7px 60px;
+    border-radius: 3px;
+    background:dodgerblue;
+    color:white;
+    border:none;
+    font-family: sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+}
